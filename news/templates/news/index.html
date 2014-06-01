@@ -1,0 +1,30 @@
+<head>
+    <title>Поиск</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+</head>
+
+<body>
+	<style>
+	    #content {
+	        position	: absolute;
+	        top		: 50%;
+			height		: 240px;
+			margin-top	: -120px;
+			text-align: center;
+			left: 50%;
+            margin-left: -500px;
+            width: 1000px;
+		}
+	</style>
+
+	<div id="content">
+	        <h1>Поисковик</h1>
+	        <br>
+	        <form action="/news/search/" method="get">
+	            <input type="text" name="query" value="">
+	            <input type="hidden" name="page" value="1"/>
+	            <input type="submit" value="Найти">
+	        </form>
+	        <br>
+	</div>
+</body>
