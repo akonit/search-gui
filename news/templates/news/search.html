@@ -4,7 +4,34 @@
 </head>
 
 <body>
-	<div>
+
+	<style>
+	    #content {
+            margin-top: 2em;
+	        padding-left: 40px;
+		}
+
+		#link {
+			color: #333366;
+			font-size: 12px;
+		}
+
+		#meta {
+			font-size: 12px;			
+		}
+
+		p {
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+
+        #pages {
+	        padding-left: 40px;
+			font-size: 14px;        	
+        }
+	</style>
+
+	<div id="content">
 	        <h3>Поисковик</h3>
 	        <form action="/news/search/" method="get">
 	            <input type="text" name="query" value="">
@@ -13,11 +40,34 @@
 	        </form>
 	</div>
 
+    <br>
 	<div>
-		<p>Результат...</p>
+		{% if news_list %}
+        <dl>
+            {% for news in news_list %}
+                <dd>
+	        	    <p><a href="{{ news.link }}">{{ news.title }}</a></p>
+	        	    <div id="link"><p>{{ news.link }}</p></div>
+	        	    <p>{{ news.snippet }}</p>
+	        	    <div id="meta"><p>{{ news.region }}, {{ news.branch }}, {{ news.date }}</p></div>
+                </dd>
+            <br>
+        {% endfor %}
+        </dl>
+        {% else %}
+            <p>Ваш запрос не дал результатов.</p>
+        {% endif %}
 	</div>
 
 	<div>
-		<!-- страницы -->
+		{% if news_list %}
+		    <div id="pages">
+		    	<p>
+					{% for i in range %}
+					    <a href="/news/search/?query={{ query }}&amp;page={{ i }}">{{ i }}&nbsp;</a>
+					{% endfor %}
+			    </p>
+			</div>
+        {% endif %}
 	</div>
 </body>

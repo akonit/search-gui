@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 WSGI config for search_gui project.
 
