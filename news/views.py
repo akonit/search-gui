@@ -26,13 +26,12 @@ def search(request):
     if 'query' in request.GET and request.GET['query'] and 'page' in request.GET and request.GET['page']:
         query = request.GET['query']
         page = request.GET['page']
-
         # send request to pipe
         if not os.path.exists(wfPath):
             os.mkfifo(wfPath)
 
         wp = open(wfPath, 'w')
-        wp.write(query)       
+        wp.write(query.encode('UTF-8'))       
         wp.close()
 
         # get result from pipe
@@ -40,7 +39,7 @@ def search(request):
             os.mkfifo(rfPath)
 
         rp = open(rfPath, 'r')
-        response = rp.read()
+        response = rp.read().decode('cp1251')
         full_news_list = parseJsonResponse(eval(response))
         rp.close()
 

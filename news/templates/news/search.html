@@ -1,6 +1,6 @@
 <head>
     <title>Поиск</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 </head>
 
 <body>
@@ -14,6 +14,11 @@
 		#link {
 			color: #333366;
 			font-size: 12px;
+		}
+
+		#source {
+			color: #333366;
+			font-size: 12px;			
 		}
 
 		#meta {
@@ -49,6 +54,7 @@
 	        	    <p><a href="{{ news.link }}">{{ news.title }}</a></p>
 	        	    <div id="link"><p>{{ news.link }}</p></div>
 	        	    <p>{{ news.snippet }}</p>
+	        	    <div id="source"><p><a href="http://{{ news.source }}">{{ news.source }}</a></p></div>
 	        	    <div id="meta"><p>{{ news.region }}, {{ news.branch }}, {{ news.date }}</p></div>
                 </dd>
             <br>
