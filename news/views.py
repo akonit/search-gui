@@ -26,8 +26,10 @@ def search(request):
     if 'query' in request.GET and request.GET['query'] and 'page' in request.GET and request.GET['page']:
         query = request.GET['query']
         page = request.GET['page']
-        
-        
+        # send request to pipe
+        if not os.path.exists(wfPath):
+            os.mkfifo(wfPath)
+
         wp = open(wfPath, 'w')
         wp.write(query.encode('cp1251'))
         wp.close()
@@ -40,7 +42,8 @@ def search(request):
         response = rp.read().decode('cp1251')
         full_news_list = parseJsonResponse(eval(response))
         rp.close()
-        
+
+        # render result
         news_list = getNewsPerPage(full_news_list, int(page))
         context = {'news_list': news_list, 'range' : range(1, getPageNumber(len(full_news_list)) + 1), 'query' : query}
         return render(request, 'news/search.html', context)
