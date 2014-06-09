@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- coding: cp1251 -*-
 
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -18,18 +18,18 @@ rfPath = "./json_output"
 news_per_page = 10
 
 def index(request):
-    request.encoding = 'utf8'
+    request.encoding = 'cp1251'
     return render(request, 'news/index.html')
 
 def search(request):
-    request.encoding = 'utf8'
+    request.encoding = 'cp1251'
     if 'query' in request.GET and request.GET['query'] and 'page' in request.GET and request.GET['page']:
         query = request.GET['query']
         page = request.GET['page']
         
         
         wp = open(wfPath, 'w')
-        wp.write(query.encode('UTF-8'))       
+        wp.write(query.encode('cp1251'))
         wp.close()
 
         # get result from pipe
@@ -57,10 +57,7 @@ def parseJsonResponse(response):
             news_json = eval(news.json)
             jsonNews = JsonNews()
             jsonNews.title = news_json['title']
-            link = news_json['link']
-            while link.find('\\') != -1:
-                link = link.replace("\\", "")
-            jsonNews.link = link
+            jsonNews.link = news_json['link']
             jsonNews.source = news_json['source']
             jsonNews.region = news_json['region']
             jsonNews.branch = news_json['branch']
