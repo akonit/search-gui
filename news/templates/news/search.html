@@ -1,6 +1,8 @@
+<!DOCTYPE html>
+<html lang="ru"> 
 <head>
     <title>Поиск</title>
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html" charset="cp1251">
 </head>
 
 <body>
@@ -46,15 +48,15 @@
 	</div>
 
     <br>
-	<div>
+	<div contenteditable="true">
 		{% if news_list %}
         <dl>
             {% for news in news_list %}
                 <dd>
-	        	    <p><a href="{{ news.link }}">{{ news.title }}</a></p>
+	        	    <p><a href="{{ news.link }}">{{ news.title|safe }}</a></p>
 	        	    <div id="link"><p>{{ news.link }}</p></div>
-	        	    <p>{{ news.snippet }}</p>
-	        	    <div id="source"><p><a href="http://{{ news.source }}">{{ news.source }}</a></p></div>
+	        	    <p>{{ news.snippet|safe }}</p>
+	        	    <div id="source"><p><a href="http://{{ news.source }}">{{ news.source|safe }}</a></p></div>
 	        	    <div id="meta"><p>{{ news.region }}, {{ news.branch }}, {{ news.date }}</p></div>
                 </dd>
             <br>
@@ -77,3 +79,4 @@
         {% endif %}
 	</div>
 </body>
+</html>

@@ -25,6 +25,6 @@ while True:
     rp.close()
 
     wp = open(wfPath, 'w')
-    wp.write("[[1, 'snipt1. some random text here'], [2, 'сниппет на русском языке. смертельный номер'], [3, 'snipt3'], [4, 'snipt4'], [5, 'snipt5'], [6, 'snipt6'], [7, 'snipt7'], [8, 'snipt8'], [9, 'snipt9'], [10, 'snipt10'], [11, 'snipt11'], [12, 'snipt12']]".decode('utf-8').encode('cp1251'))		
+    wp.write("[[1, 'snipt1. some <b>random</b> text here'], [2, 'сниппет на русском языке. смертельный номер'], [3, 'snipt3'], [4, 'snipt4'], [5, 'snipt5'], [6, 'snipt6'], [7, 'snipt7'], [8, 'snipt8'], [9, 'snipt9'], [10, 'snipt10'], [11, 'snipt11'], [12, 'snipt12']]".decode('utf-8').encode('cp1251'))		
     #wp.write("[]".encode('cp1251'))
     wp.close()
