@@ -27,8 +27,8 @@ def search(request):
         query = request.GET['query']
         page = request.GET['page']
         # send request to pipe
-        if not os.path.exists(wfPath):
-            os.mkfifo(wfPath)
+        #if not os.path.exists(wfPath):
+        #    os.mkfifo(wfPath)
 
         wp = open(wfPath, 'w')
         wp.write(query.encode('cp1251'))
